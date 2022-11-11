@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Save Book</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="book.name">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Authors</mat-label>
+    <input matInput [(ngModel)]="book.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onSave()" cdkFocusInitial>Save</button>
+</div>
