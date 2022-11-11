@@ -1,3 +1,25 @@
 <div class="container">
-  <button mat-raised-button (click)="newBookDialog()">add new Book</button>
+  <div class="library-heading">
+    <button mat-raised-button color="primary" (click)="newBookDialog()">add new Book</button>
+  </div>
+  <div class="library-body">
+  <div class="col-md-3" *ngFor="let book of books">
+    <mat-card>
+      <mat-card-title>
+        {{book.name}}
+      </mat-card-title>
+      <mat-card-subtitle>Author(s)</mat-card-subtitle>
+      <mat-card-content>
+        <mat-chip-list aria-label="Authors">
+          <mat-chip *ngFor="let author of book.authors">
+            {{author}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="deleteBook(book.id)">book</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  </div>
 </div>
