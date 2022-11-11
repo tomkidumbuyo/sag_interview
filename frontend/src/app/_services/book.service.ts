@@ -16,15 +16,15 @@ export class BookService {
   }
 
   createBook(book: {name: string, authors: string[]}) {
-    return this.http.get(API_URL + 'create');
+    return this.http.post<any>(API_URL + 'create',book);
   }
 
   updateBook(book: {_id: string, name: string, authors: string[]}) {
-    return this.http.get(API_URL + book._id);
+    return this.http.put(API_URL + book._id, book);
   }
 
   deleteBook(id: string) {
-    return this.http.get(API_URL + id);
+    return this.http.delete(API_URL + id);
   }
 
   getbookById(id: string) {

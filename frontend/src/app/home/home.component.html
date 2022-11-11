@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="library-heading">
+  <div class="library-heading" *ngIf="isLoggedIn">
     <button mat-raised-button color="primary" (click)="newBookDialog()">add new Book</button>
   </div>
   <div class="library-body">
@@ -17,7 +17,7 @@
         </mat-chip-list>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="warn" (click)="deleteBook(book.id)">book</button>
+        <button mat-raised-button color="warn" (click)="deleteBook(book._id)" *ngIf="isLoggedIn">delete</button>
       </mat-card-actions>
     </mat-card>
   </div>

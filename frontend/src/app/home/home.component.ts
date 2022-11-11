@@ -4,6 +4,7 @@ import { BookService } from '../_services/book.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { StorageService } from '../_services/storage.service';
 
 
 @Component({
@@ -14,11 +15,16 @@ import {MatChipInputEvent} from '@angular/material/chips';
 export class HomeComponent implements OnInit {
   books: any[] = [];
   isLoggedIn: boolean = false;
+  user: any;
 
-  constructor(private bookService: BookService, private authService: AuthService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private bookService: BookService, private storageService: StorageService, private snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.fetchBooks()
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.user = this.storageService.getUser();
+    }
   }
 
   fetchBooks() {
