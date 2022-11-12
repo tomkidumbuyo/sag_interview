@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent, NewBookDialog } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const MatModules = [
   MatButtonModule,
@@ -27,7 +27,8 @@ const MatModules = [
   MatSnackBarModule,
   MatDialogModule,
   MatCardModule,
-  MatChipsModule
+  MatChipsModule,
+  MatSlideToggleModule
 ];
 
 @NgModule({
@@ -36,7 +37,6 @@ const MatModules = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
     NewBookDialog
   ],
   imports: [

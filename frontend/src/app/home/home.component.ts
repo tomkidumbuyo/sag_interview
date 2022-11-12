@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit {
 
   newBookDialog(book?: {_id: string, name: string, authors: string[]}): void {
       const dialogRef = this.dialog.open(NewBookDialog, {
-        width: '500px',
         data: book,
       });
 
@@ -89,15 +88,17 @@ export class HomeComponent implements OnInit {
 
 export class NewBookDialog {
   book: {
-    _id?: string, name: string, authors: string[]
+    _id?: string, name: string, private: boolean, description: string, authors: string[]
   } = {
     name: "",
+    private: false,
+    description: "",
     authors: []
   }
 
   constructor(
     public dialogRef: MatDialogRef<NewBookDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: {_id: string, name: string, authors: [string]},
+    @Inject(MAT_DIALOG_DATA) public data: {_id: string, private: false, name: string, description: string, authors: [string]},
     private bookService: BookService,
   ) {
     if(data) {
@@ -120,6 +121,14 @@ export class NewBookDialog {
     this.book.authors.splice(this.book.authors.indexOf(keyword),1);
   }
 
+  setBookPrivateValue(e: any) {
+    if(e.checked){
+      this.book.private = true
+    }else{
+      this.book.private = false
+    }
+  }
+
   onSave(): void{
     this.bookService.createBook(this.book).subscribe({
       next: data => {
@@ -129,4 +138,5 @@ export class NewBookDialog {
       }
     })
   }
+
 }

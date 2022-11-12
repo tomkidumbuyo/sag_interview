@@ -1,9 +1,23 @@
 <h1 mat-dialog-title>Save Book</h1>
 <div mat-dialog-content>
+  <section class="example-section">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Book Title</mat-label>
       <input matInput [(ngModel)]="book.name">
     </mat-form-field>
+  </section>
+  <section class="example-section">
+    <mat-slide-toggle [checked]="book.private" (change)="setBookPrivateValue($event)">
+      Private
+    </mat-slide-toggle>
+  </section>
+  <section class="example-section">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="book.description" maxlength="200"></textarea>
+    </mat-form-field>
+  </section>
+  <section class="example-section">
     <mat-form-field class="example-chip-list" appearance="fill">
       <mat-label>Authors</mat-label>
       <mat-chip-list #chipList aria-label="Books authors" multiple>
@@ -20,6 +34,7 @@
           (matChipInputTokenEnd)="addKeywordFromInput($event)">
       </mat-chip-list>
     </mat-form-field>
+  </section>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>

@@ -19,6 +19,4 @@ module.exports = function(app) {
 
     app.get("/api/book", controller.getAllBooks);
 
-    app.get("/api/books/:id", controller.getBookById);
-
 }
